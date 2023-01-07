@@ -5,6 +5,50 @@
 }
 
 body{
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #D0EE98;
+}
+
+.memory-game{
+    padding: 1rem;
+    margin: 1rem;
+    height: auto;
+    width: 850px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: #F3FFDC;
+    border-radius: 10px;
+}
+
+.memory-card{
+    margin: 0.5rem;
+    height: 150px;
+    width: 120px;
+    border: 2px solid #B0E65D;
+    border-radius: 10px;
+    background-color: #E7F6CD;
+    box-shadow: 7px 5px #def4b4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.front-face{
+    width: 100px;
+    max-height: 120px;
+    position: absolute;
+}
+
+.back-face{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 10px;
 }
