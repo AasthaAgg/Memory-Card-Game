@@ -17,7 +17,8 @@ body{
     padding: 1rem;
     margin: 1rem;
     height: auto;
-    width: 850px;
+    width: calc(100% - 2rem);;
+    max-width: 850px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -41,8 +42,8 @@ body{
 }
 
 .front-face{
-    width: 100px;
-    max-height: 120px;
+    width: calc(100% - 1rem);
+    max-height: calc(100% - 1rem);
     position: absolute;
 }
 
@@ -51,4 +52,18 @@ body{
     height: 100%;
     position: absolute;
     border-radius: 10px;
+}
+
+/* ==== Media Query ==== */
+
+@media screen and (max-width:650px) {
+    .memory-game{
+        padding: 0.5rem;
+    }
+
+    .memory-card{
+        margin: 0.3rem;
+        height: 85px;
+        width: 70px;
+    }
 }
