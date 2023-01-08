@@ -49,7 +49,7 @@ function unFlipCards(){
         secondCard.classList.remove('flip');
 
         resetBoard();
-    }, 1000);
+    }, 800);
 }
 
 function resetBoard(){
@@ -61,8 +61,8 @@ function resetBoard(){
 
 (function shuffle(){
     cards.forEach(card => {
-        let randomPos = Math.floor(Math.random() * 12);
-        card.getElementsByClassName.order = randomPos;
+        let randomPos = Math.floor(Math.random() * 24);
+        card.style.order = randomPos;
     })
 })();
 
