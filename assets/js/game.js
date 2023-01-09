@@ -1,8 +1,14 @@
 const cards = document.querySelectorAll('.memory-card');
+const flips = document.querySelector('.flips');
+const win = document.querySelector('.win');
 
+const totalPairs = 12;
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
+let flipCount = 0;
+let countMatchingPairs = 0;
+
 
 function flipCard(){
     if(lockBoard) return;
@@ -11,6 +17,8 @@ function flipCard(){
     if(this === firstCard) return;
 
     this.classList.add('flip');
+    flipCount++;
+    setFlipCount();
 
     // first card
     if(!hasFlippedCard){
@@ -32,12 +40,17 @@ function matchCards(){
     let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
     
     isMatch ? disableCards() : unFlipCards();
+
+    if(countMatchingPairs == totalPairs) {
+        setTimeout(gameOver, 1200);
+    }
 }
 
 function disableCards(){
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
 
+    countMatchingPairs++;
     resetBoard();
 }
 
@@ -61,9 +74,33 @@ function resetBoard(){
 
 (function shuffle(){
     cards.forEach(card => {
-        let randomPos = Math.floor(Math.random() * 24);
+        let randomPos = Math.floor(Math.random() * (totalPairs*2));
         card.style.order = randomPos;
-    })
+    });
 })();
 
+
+// Add flip card event listener to all cards
 cards.forEach(card => card.addEventListener('click', flipCard));
+
+
+function setFlipCount(){
+    flips.innerHTML = "Flips : "+ flipCount;
+}
+
+function gameOver(){
+    win.style.visibility = 'visible';
+}
+
+function resetGame(){
+    cards.forEach(card => card.classList.remove('flip'));
+
+    resetBoard();
+    flipCount = 0;
+    countMatchingPairs = 0;
+
+    win.style.visibility = 'hidden';
+
+    cards.forEach(card => card.addEventListener('click', flipCard));
+    setFlipCount();
+}
