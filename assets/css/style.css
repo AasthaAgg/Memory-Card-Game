@@ -54,3 +54,18 @@ button:active{
     box-shadow: 10px 6px 20px rgba(0, 0, 0, 0.834);
     transform: scale(1.04);
 }
+
+@media screen and (max-width:760px) {
+    body{
+        background: url(../img/home-mobile-bg.png) no-repeat;
+        background-size: contain;
+        background-position: bottom center;
+    }
+
+    button{
+        padding: 0.7rem 1.5rem;
+        font-size: 14px;
+        top: auto;
+        bottom: 250px;
+    }
+}
