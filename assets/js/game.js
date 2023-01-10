@@ -1,4 +1,5 @@
 const cards = document.querySelectorAll('.memory-card');
+const time = document.querySelector('.timer');
 const flips = document.querySelector('.flips');
 const win = document.querySelector('.win');
 
@@ -8,6 +9,8 @@ let lockBoard = false;
 let firstCard, secondCard;
 let flipCount = 0;
 let countMatchingPairs = 0;
+let secs=0;
+let timer = setInterval(startTimer, 1000);
 
 
 function flipCard(){
@@ -72,16 +75,29 @@ function resetBoard(){
 
 // shuffle cards
 
-(function shuffle(){
+function shuffle(){
     cards.forEach(card => {
         let randomPos = Math.floor(Math.random() * (totalPairs*2));
         card.style.order = randomPos;
     });
-})();
+}
 
+// onload
+shuffle();
 
 // Add flip card event listener to all cards
 cards.forEach(card => card.addEventListener('click', flipCard));
+
+
+// timer
+function startTimer() {
+    secs++;
+    if(secs < 10){
+        time.innerHTML = "Time : 00:0" + secs;   
+    }else{
+        time.innerHTML = "Time : 00:" + secs;
+    }
+}
 
 
 function setFlipCount(){
@@ -89,6 +105,9 @@ function setFlipCount(){
 }
 
 function gameOver(){
+    // stop timer
+    clearInterval(timer);
+
     win.style.visibility = 'visible';
 }
 
@@ -98,9 +117,13 @@ function resetGame(){
     resetBoard();
     flipCount = 0;
     countMatchingPairs = 0;
+    secs=0;
 
     win.style.visibility = 'hidden';
 
+    shuffle();
     cards.forEach(card => card.addEventListener('click', flipCard));
     setFlipCount();
+
+    timer = setInterval(startTimer, 1000);
 }
