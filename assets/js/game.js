@@ -10,6 +10,8 @@ let firstCard, secondCard;
 let flipCount = 0;
 let countMatchingPairs = 0;
 let secs=0;
+let min=0;
+let timeSet;
 let timer = setInterval(startTimer, 1000);
 
 
@@ -92,11 +94,18 @@ cards.forEach(card => card.addEventListener('click', flipCard));
 // timer
 function startTimer() {
     secs++;
-    if(secs < 10){
-        time.innerHTML = "Time : 00:0" + secs;   
-    }else{
-        time.innerHTML = "Time : 00:" + secs;
+
+    if(secs >= 60){
+        secs=0;
+        min++;
     }
+
+    timeSet = "Time : ";
+
+    min<10 ? timeSet += "0" + min +":" : timeSet += min +":";
+    secs<10 ? timeSet += "0" + secs : timeSet += secs;
+
+    time.innerHTML = timeSet;
 }
 
 
@@ -118,6 +127,7 @@ function resetGame(){
     flipCount = 0;
     countMatchingPairs = 0;
     secs=0;
+    min=0;
 
     win.style.visibility = 'hidden';
 
