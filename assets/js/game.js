@@ -12,7 +12,7 @@ let countMatchingPairs = 0;
 let secs=0;
 let min=0;
 let timeSet;
-let timer = setInterval(startTimer, 1000);
+let timer;
 
 
 function flipCard(){
@@ -23,6 +23,11 @@ function flipCard(){
 
     this.classList.add('flip');
     flipCount++;
+
+    if(flipCount == 1) {
+        timer = setInterval(startTimer, 1000);
+    }
+
     setFlipCount();
 
     // first card
@@ -47,7 +52,12 @@ function matchCards(){
     isMatch ? disableCards() : unFlipCards();
 
     if(countMatchingPairs == totalPairs) {
-        setTimeout(gameOver, 1200);
+        // stop timer
+        clearInterval(timer);
+    
+        setTimeout( () => {
+            win.style.visibility = 'visible';
+        }, 1200);
     }
 }
 
@@ -114,9 +124,6 @@ function setFlipCount(){
 }
 
 function gameOver(){
-    // stop timer
-    clearInterval(timer);
-
     win.style.visibility = 'visible';
 }
 
@@ -129,11 +136,10 @@ function resetGame(){
     secs=0;
     min=0;
 
+    time.innerHTML = "Time : 00:00";
     win.style.visibility = 'hidden';
 
     shuffle();
     cards.forEach(card => card.addEventListener('click', flipCard));
     setFlipCount();
-
-    timer = setInterval(startTimer, 1000);
 }
