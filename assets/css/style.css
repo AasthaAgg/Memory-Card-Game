@@ -55,17 +55,16 @@ button:active{
     transform: scale(1.04);
 }
 
-@media screen and (max-width:760px) {
+@media screen and (max-width:500px) {
     body{
         background: url(../img/home-mobile-bg.png) no-repeat;
         background-size: contain;
-        background-position: bottom center;
+        background-position: top center;
     }
 
     button{
         padding: 0.7rem 1.5rem;
         font-size: 14px;
-        top: auto;
-        bottom: 250px;
+        top: 300px;
     }
 }

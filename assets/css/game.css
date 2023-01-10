@@ -129,13 +129,17 @@ button:active{
 
 @media screen and (max-width:650px) {
     .memory-game{
-        padding: 0.5rem;
+        margin: 0;
+        padding: 1rem 0.5rem;
+        width: 100%;
+        border-radius: 0;
     }
 
     .memory-card{
-        margin: 0.3rem;
+        margin: 0.2rem;
         height: 85px;
         width: 70px;
+        box-shadow: 4px 2px #B5CFE6;
     }
 
     .header{
