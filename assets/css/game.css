@@ -26,6 +26,7 @@ body{
     background-color: #529ce6;
     border-bottom: 2px solid #5698F8;
     box-shadow: 0 5px 20px #519bfb6a;
+    z-index: 100;
 }
 
 .memory-game{
@@ -89,18 +90,14 @@ body{
     visibility: hidden;
     backdrop-filter: blur(1px);
     position: absolute;
-    top: 0;
-    right: 0;
-    padding: 1rem;
-    margin: 1rem;
+    top: 80px;
     height: 100%;
-    width: calc(100% - 2rem);
-    max-width: 850px;
+    width: 100%;
     background: url('https://usagif.com/wp-content/uploads/gif/confetti-46.gif');
-    z-index: 100;
+    z-index: 50;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 button{
@@ -113,6 +110,7 @@ button{
     font-size: 20px;
     font-weight: 600;
     padding: 1rem 3rem;
+    margin: 25px;
     text-decoration: none;
     transition: all .3s;
 }
